@@ -3,6 +3,7 @@ import { FileText, ChevronRight, MapPin } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { HeroBackground3D } from './canvas/HeroBackground3D';
 import { scrollToElement } from '../hooks/useSmoothScroll';
+import { VisitorCounter } from './VisitorCounter';
 
 interface HeroProps {
   onOpenResume: () => void;
@@ -55,18 +56,22 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
           </div>
         </div>
 
-        {/* Status Pill */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-cyan-400 text-xs font-mono tracking-widest uppercase mb-6 shadow-sm">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
-          </span>
-          <span>{PERSONAL_INFO.status}</span>
-          <span className="text-gray-600">•</span>
-          <span className="flex items-center gap-1 text-gray-400">
-            <MapPin className="w-3 h-3 text-cyan-400" />
-            {PERSONAL_INFO.location}
-          </span>
+        {/* Status Pill & Live Visitor Counter */}
+        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-cyan-400 text-xs font-mono tracking-widest uppercase shadow-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
+            </span>
+            <span>{PERSONAL_INFO.status}</span>
+            <span className="text-gray-600">•</span>
+            <span className="flex items-center gap-1 text-gray-400">
+              <MapPin className="w-3 h-3 text-cyan-400" />
+              {PERSONAL_INFO.location}
+            </span>
+          </div>
+
+          <VisitorCounter variant="badge" />
         </div>
 
         {/* Primary Name Display */}

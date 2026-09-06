@@ -1,0 +1,27 @@
+{
+  "entities": {
+    "VisitorStats": {
+      "title": "VisitorStats",
+      "description": "Aggregated visitor count and activity for the portfolio",
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "number",
+          "description": "Total unique/persistent view count"
+        },
+        "lastVisitedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of the most recent visitor"
+        }
+      },
+      "required": ["count"]
+    }
+  },
+  "firestore": {
+    "/stats/visitors": {
+      "schema": "VisitorStats",
+      "description": "Persistent portfolio views and visitor metrics document"
+    }
+  }
+}

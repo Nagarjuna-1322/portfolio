@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Linkedin, Github, Send, CheckCircle2, Copy, Check, Terminal } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { VisitorCounter } from './VisitorCounter';
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -123,6 +124,11 @@ export const Contact: React.FC = () => {
               <p className="text-xs text-gray-300 leading-relaxed border-t border-white/10 pt-3.5 mt-3.5">
                 Looking for an ambitious developer for an internship or project? Drop me a line directly through any of the channels below.
               </p>
+
+              {/* Persistent Firebase Visitor Counter Card */}
+              <div className="mt-4 pt-2">
+                <VisitorCounter variant="card" />
+              </div>
             </div>
 
             <div className="bg-white/5 p-6 sm:p-8 rounded-3xl border border-white/10 relative overflow-hidden">

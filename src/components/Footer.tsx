@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowUp, Github, Linkedin, Mail, Clock } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { scrollToElement } from '../hooks/useSmoothScroll';
+import { VisitorCounter } from './VisitorCounter';
 
 export const Footer: React.FC = () => {
   const [time, setTime] = useState<string>('');
@@ -48,11 +49,15 @@ export const Footer: React.FC = () => {
             </p>
           </div>
 
-          {/* Local IST Clock */}
-          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-gray-400 font-mono">
-            <Clock className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Hyderabad, IN:</span>
-            <span className="text-cyan-300 font-semibold">{time || 'IST Time'}</span>
+          {/* Status Indicators: Local IST Clock & Live Visitor Counter */}
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-gray-400 font-mono">
+              <Clock className="w-3.5 h-3.5 text-cyan-400" />
+              <span>Hyderabad, IN:</span>
+              <span className="text-cyan-300 font-semibold">{time || 'IST Time'}</span>
+            </div>
+
+            <VisitorCounter variant="pill" />
           </div>
 
           {/* Social Links & Back to Top */}
