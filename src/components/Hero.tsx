@@ -26,6 +26,35 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
       <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-indigo-600/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+        {/* Profile Avatar Frame */}
+        <div className="relative mb-6 group">
+          {/* Animated subtle pulsing aura */}
+          <div className="absolute -inset-1.5 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 opacity-60 blur-md group-hover:opacity-100 transition-opacity duration-500" />
+          
+          {/* Circular Cyber Border */}
+          <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full p-1 bg-gradient-to-tr from-cyan-400 via-blue-500 to-indigo-400 shadow-[0_0_30px_rgba(6,182,212,0.35)]">
+            <div className="w-full h-full rounded-full overflow-hidden bg-[#090d16] p-0.5">
+              <img
+                src={PERSONAL_INFO.profilePhoto}
+                alt={PERSONAL_INFO.fullName}
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+
+          {/* Active Status Badge on Avatar */}
+          <div 
+            className="absolute bottom-1 right-1 sm:bottom-2 sm:right-2 p-1 rounded-full bg-[#050505] border border-cyan-400/40 shadow-lg"
+            title={PERSONAL_INFO.status}
+          >
+            <span className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-400"></span>
+            </span>
+          </div>
+        </div>
+
         {/* Status Pill */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-cyan-400 text-xs font-mono tracking-widest uppercase mb-6 shadow-sm">
           <span className="relative flex h-2 w-2">

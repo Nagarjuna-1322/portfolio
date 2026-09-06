@@ -82,10 +82,53 @@ export const Contact: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* LEFT: Contact Coordinates & Channels */}
           <div className="lg:col-span-5 flex flex-col gap-6">
+            {/* Developer Identity Card with Photo */}
+            <div className="bg-white/5 p-6 rounded-3xl border border-white/10 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none" />
+              
+              <div className="flex items-center gap-4">
+                {/* Avatar with cyber border and status ping */}
+                <div className="relative shrink-0">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl p-0.5 bg-gradient-to-tr from-cyan-400 via-blue-500 to-indigo-500 shadow-[0_0_20px_rgba(6,182,212,0.35)]">
+                    <img
+                      src={PERSONAL_INFO.profilePhoto}
+                      alt={PERSONAL_INFO.fullName}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover rounded-[14px]"
+                    />
+                  </div>
+                  <span className="absolute -bottom-1 -right-1 flex h-4 w-4">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-black"></span>
+                  </span>
+                </div>
+
+                <div className="min-w-0">
+                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[10px] font-mono tracking-wider uppercase mb-1">
+                    Direct Contact
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight truncate">
+                    {PERSONAL_INFO.fullName}
+                  </h3>
+                  <p className="text-xs text-gray-400 font-mono mt-0.5">
+                    B.Tech AI & ML • 3rd Year
+                  </p>
+                  <p className="text-[11px] text-emerald-400 flex items-center gap-1.5 mt-1.5 font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    {PERSONAL_INFO.status}
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-xs text-gray-300 leading-relaxed border-t border-white/10 pt-3.5 mt-3.5">
+                Looking for an ambitious developer for an internship or project? Drop me a line directly through any of the channels below.
+              </p>
+            </div>
+
             <div className="bg-white/5 p-6 sm:p-8 rounded-3xl border border-white/10 relative overflow-hidden">
               <h3 className="text-xl font-bold text-white mb-2">Get in Touch</h3>
               <p className="text-xs sm:text-sm text-gray-400 leading-relaxed mb-6">
-                I am actively seeking engineering internships, technical collaborations, and innovative AI/ML projects. Feel free to connect directly via email, phone, or LinkedIn.
+                Feel free to connect directly via email, phone, or LinkedIn.
               </p>
 
               {/* Direct Channels */}

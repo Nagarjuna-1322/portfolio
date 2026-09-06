@@ -60,8 +60,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenResume }) =
             className="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg p-1"
             aria-label="Nagarjuna Reddy Home"
           >
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-black font-mono font-black text-sm shadow-[0_0_15px_rgba(6,182,212,0.3)] group-hover:scale-105 transition-transform">
-              N
+            <div className="w-8 h-8 rounded-full overflow-hidden p-0.5 bg-gradient-to-tr from-cyan-400 to-blue-600 shadow-[0_0_12px_rgba(6,182,212,0.4)] group-hover:scale-105 transition-all shrink-0">
+              <img
+                src={PERSONAL_INFO.profilePhoto}
+                alt={PERSONAL_INFO.name}
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover rounded-full"
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-display font-bold text-sm tracking-tight text-white group-hover:text-cyan-400 transition-colors">

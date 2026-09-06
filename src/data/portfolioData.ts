@@ -3,6 +3,7 @@ import { Project, SkillCategory, JourneyMilestone, Certification, GithubRepoInfo
 export const PERSONAL_INFO = {
   name: "NAGARJUNA REDDY",
   fullName: "Nagarjuna Reddy Mekala",
+  profilePhoto: "/profile.jpg",
   headline: "Building Digital Experiences with Code & AI",
   tagline: "Developer • AI Enthusiast • Problem Solver",
   status: "Available for Internships & Opportunities",

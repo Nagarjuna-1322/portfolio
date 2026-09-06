@@ -42,9 +42,24 @@ export const About: React.FC = () => {
             <div className="bg-white/5 border border-white/10 p-6 sm:p-8 rounded-3xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
               
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 flex items-center gap-2">
-                <span>Passionate AI & Software Engineering Student</span>
-              </h3>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-5">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden p-0.5 bg-gradient-to-tr from-cyan-400 to-blue-600 shadow-[0_0_15px_rgba(6,182,212,0.3)] shrink-0">
+                  <img
+                    src={PERSONAL_INFO.profilePhoto}
+                    alt={PERSONAL_INFO.fullName}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover rounded-[14px]"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                    Passionate AI & Software Engineering Student
+                  </h3>
+                  <p className="text-xs sm:text-sm text-cyan-400 font-mono mt-1">
+                    {PERSONAL_INFO.fullName} • {PERSONAL_INFO.location}
+                  </p>
+                </div>
+              </div>
 
               <p className="text-gray-300 leading-relaxed text-sm sm:text-base mb-4">
                 I am <span className="text-cyan-300 font-semibold">{PERSONAL_INFO.fullName}</span>, 

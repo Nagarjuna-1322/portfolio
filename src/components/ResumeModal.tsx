@@ -148,28 +148,39 @@ AWARDS & CERTIFICATIONS:
         {/* ATS-Formatted Document Container */}
         <div className="mt-6 bg-white text-slate-900 rounded-2xl p-6 sm:p-10 shadow-inner font-sans selection:bg-cyan-200">
           {/* Header */}
-          <div className="text-center border-b-2 border-slate-900 pb-4 mb-6">
-            <h1 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-wide text-slate-900">
-              {PERSONAL_INFO.fullName}
-            </h1>
-            <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 text-xs text-slate-700 mt-2 font-medium">
-              <span>{PERSONAL_INFO.location}</span>
-              <span>•</span>
-              <a href={`tel:${PERSONAL_INFO.phone}`} className="hover:underline text-blue-800">
-                {PERSONAL_INFO.phone}
-              </a>
-              <span>•</span>
-              <a href={`mailto:${PERSONAL_INFO.email}`} className="hover:underline text-blue-800">
-                {PERSONAL_INFO.email}
-              </a>
-              <span>•</span>
-              <a href={PERSONAL_INFO.linkedinUrl} target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-800">
-                LinkedIn Profile
-              </a>
-              <span>•</span>
-              <a href={PERSONAL_INFO.githubUrl} target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-800">
-                GitHub @{PERSONAL_INFO.githubUsername}
-              </a>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b-2 border-slate-900 pb-4 mb-6">
+            <div className="text-center sm:text-left flex-1">
+              <h1 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-wide text-slate-900">
+                {PERSONAL_INFO.fullName}
+              </h1>
+              <div className="flex flex-wrap justify-center sm:justify-start items-center gap-2 sm:gap-3 text-xs text-slate-700 mt-2 font-medium">
+                <span>{PERSONAL_INFO.location}</span>
+                <span>•</span>
+                <a href={`tel:${PERSONAL_INFO.phone}`} className="hover:underline text-blue-800">
+                  {PERSONAL_INFO.phone}
+                </a>
+                <span>•</span>
+                <a href={`mailto:${PERSONAL_INFO.email}`} className="hover:underline text-blue-800">
+                  {PERSONAL_INFO.email}
+                </a>
+                <span>•</span>
+                <a href={PERSONAL_INFO.linkedinUrl} target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-800">
+                  LinkedIn Profile
+                </a>
+                <span>•</span>
+                <a href={PERSONAL_INFO.githubUrl} target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-800">
+                  GitHub @{PERSONAL_INFO.githubUsername}
+                </a>
+              </div>
+            </div>
+
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border border-slate-300 shadow-sm shrink-0">
+              <img
+                src={PERSONAL_INFO.profilePhoto}
+                alt={PERSONAL_INFO.fullName}
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
