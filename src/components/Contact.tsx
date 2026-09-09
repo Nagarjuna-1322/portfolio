@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Linkedin, Github, Send, CheckCircle2, Copy, Check, Terminal } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Mail, Phone, MapPin, Linkedin, Github, Send, CheckCircle2, Copy, Check, Terminal, X, ExternalLink } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { motion, AnimatePresence } from 'motion/react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { VisitorCounter } from './VisitorCounter';
+
+interface ToastData {
+  id: number;
+  title: string;
+  detail: string;
+}
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -14,17 +21,53 @@ export const Contact: React.FC = () => {
 
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [toast, setToast] = useState<ToastData | null>(null);
+  const toastTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const copyToClipboard = async (text: string): Promise<boolean> => {
+    if (navigator?.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch {
+        // Fallback below
+      }
+    }
+    try {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      textArea.style.top = '-999999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      const success = document.execCommand('copy');
+      document.body.removeChild(textArea);
+      return success;
+    } catch {
+      return false;
+    }
+  };
 
   const handleCopy = async (text: string, fieldName: string) => {
-    try {
-      if (navigator?.clipboard?.writeText) {
-        await navigator.clipboard.writeText(text);
-      }
-    } catch {
-      // Fallback
-    }
+    await copyToClipboard(text);
     setCopiedField(fieldName);
-    setTimeout(() => setCopiedField(null), 2500);
+
+    if (toastTimerRef.current) {
+      clearTimeout(toastTimerRef.current);
+    }
+
+    setToast({
+      id: Date.now(),
+      title: fieldName === 'email' ? 'Email Address Copied!' : 'Copied to Clipboard!',
+      detail: text,
+    });
+
+    toastTimerRef.current = setTimeout(() => {
+      setToast(null);
+      setCopiedField(null);
+    }, 3500);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -140,32 +183,56 @@ export const Contact: React.FC = () => {
               {/* Direct Channels */}
               <div className="space-y-4">
                 {/* Email */}
-                <div className="p-3.5 rounded-2xl bg-black/30 border border-white/5 flex items-center justify-between gap-3 group hover:border-cyan-500/30 transition-all">
+                <div className="p-4 rounded-2xl bg-black/30 border border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group hover:border-cyan-500/30 transition-all">
                   <div className="flex items-center gap-3 min-w-0">
                     <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shrink-0">
                       <Mail className="w-4 h-4" />
                     </div>
                     <div className="min-w-0">
-                      <div className="text-[11px] font-mono text-gray-500 uppercase">Email Address</div>
+                      <div className="text-[11px] font-mono text-gray-500 uppercase flex items-center gap-2">
+                        <span>Email Address</span>
+                        {copiedField === 'email' && (
+                          <span className="text-[10px] text-emerald-400 font-mono flex items-center gap-1 font-semibold">
+                            <Check className="w-3 h-3" /> Copied
+                          </span>
+                        )}
+                      </div>
                       <a
                         href={`mailto:${PERSONAL_INFO.email}`}
-                        className="text-xs sm:text-sm font-semibold text-gray-200 hover:text-cyan-300 truncate block transition-colors"
+                        className="text-xs sm:text-sm font-semibold text-gray-200 hover:text-cyan-300 truncate block transition-colors font-mono"
+                        title="Click to compose email"
                       >
                         {PERSONAL_INFO.email}
                       </a>
                     </div>
                   </div>
-                  <button
-                    onClick={() => handleCopy(PERSONAL_INFO.email, 'email')}
-                    className="p-2 rounded-lg text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 transition-colors shrink-0 cursor-pointer"
-                    title="Copy email address"
-                  >
-                    {copiedField === 'email' ? (
-                      <Check className="w-4 h-4 text-emerald-400" />
-                    ) : (
-                      <Copy className="w-4 h-4" />
-                    )}
-                  </button>
+
+                  <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
+                    <button
+                      id="copy-email-clipboard-btn"
+                      type="button"
+                      onClick={() => handleCopy(PERSONAL_INFO.email, 'email')}
+                      className={`px-3 py-2 rounded-xl text-xs font-mono font-medium transition-all flex items-center gap-1.5 cursor-pointer border ${
+                        copiedField === 'email'
+                          ? 'bg-emerald-500/20 border-emerald-500/40 text-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.25)]'
+                          : 'bg-white/5 border-white/10 text-gray-300 hover:text-white hover:bg-cyan-500/10 hover:border-cyan-500/40 active:scale-95'
+                      }`}
+                      title="Copy email address to clipboard"
+                      aria-label="Copy email address to clipboard"
+                    >
+                      {copiedField === 'email' ? (
+                        <>
+                          <Check className="w-3.5 h-3.5 text-emerald-400" />
+                          <span>Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-3.5 h-3.5 text-cyan-400" />
+                          <span>Copy to Clipboard</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
                 </div>
 
                 {/* Phone */}
@@ -348,6 +415,71 @@ export const Contact: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Floating Toast Notification for Clipboard Copy */}
+      <AnimatePresence>
+        {toast && (
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.92 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.92 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 350 }}
+            className="fixed bottom-6 right-6 z-50 max-w-sm w-[calc(100%-3rem)] sm:w-auto"
+            role="status"
+            aria-live="polite"
+          >
+            <div className="bg-[#0b0f14]/95 backdrop-blur-xl border border-cyan-500/40 rounded-2xl p-4 shadow-[0_16px_40px_rgba(0,0,0,0.9),0_0_24px_rgba(6,182,212,0.25)] flex items-start gap-3 relative overflow-hidden">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500/20 to-emerald-500/20 border border-cyan-400/30 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5">
+                <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+              </div>
+
+              <div className="min-w-0 flex-1 pr-2">
+                <div className="flex items-center gap-2">
+                  <h4 className="text-xs sm:text-sm font-bold text-white font-mono">
+                    {toast.title}
+                  </h4>
+                </div>
+                <p className="text-[11px] sm:text-xs text-cyan-300 font-mono mt-0.5 truncate select-all">
+                  {toast.detail}
+                </p>
+                <div className="flex items-center gap-3 mt-2 text-[10px] font-mono">
+                  <span className="text-gray-400 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    Ready to paste
+                  </span>
+                  {toast.detail.includes('@') && (
+                    <a
+                      href={`mailto:${toast.detail}`}
+                      className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2 flex items-center gap-1 transition-colors"
+                    >
+                      <span>Open Mail Client</span>
+                      <ExternalLink className="w-2.5 h-2.5" />
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              <button
+                id="dismiss-toast-btn"
+                onClick={() => setToast(null)}
+                className="p-1 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors shrink-0 cursor-pointer"
+                title="Dismiss notification"
+                aria-label="Dismiss notification"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              {/* Progress dismiss bar */}
+              <motion.div
+                initial={{ width: '100%' }}
+                animate={{ width: '0%' }}
+                transition={{ duration: 3.5, ease: 'linear' }}
+                className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400 via-emerald-400 to-cyan-500"
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
