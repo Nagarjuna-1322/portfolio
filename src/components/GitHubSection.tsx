@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Star, GitFork, ArrowUpRight, Code2, Terminal, FolderGit2 } from 'lucide-react';
+import { Github, Star, GitFork, ArrowUpRight, Code2, Terminal, FolderGit2, ExternalLink } from 'lucide-react';
 import { PERSONAL_INFO, GITHUB_REPOS } from '../data/portfolioData';
 
 export const GitHubSection: React.FC = () => {
@@ -36,10 +36,10 @@ export const GitHubSection: React.FC = () => {
   };
 
   const languages = [
-    { name: 'Python', percent: 45, color: 'bg-cyan-400' },
-    { name: 'JavaScript / React', percent: 35, color: 'bg-indigo-400' },
-    { name: 'HTML / CSS', percent: 12, color: 'bg-emerald-400' },
-    { name: 'Java', percent: 8, color: 'bg-amber-400' }
+    { name: 'TypeScript', percent: 45, color: 'bg-cyan-400' },
+    { name: 'Python', percent: 35, color: 'bg-blue-500' },
+    { name: 'JavaScript', percent: 12, color: 'bg-amber-400' },
+    { name: 'HTML / CSS / Other', percent: 8, color: 'bg-emerald-400' }
   ];
 
   return (
@@ -100,6 +100,26 @@ export const GitHubSection: React.FC = () => {
               <span>View GitHub Profile</span>
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
+          </div>
+
+          {/* GitHub Stats Strip */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-5 border-b border-white/10">
+            <div className="p-3 rounded-2xl bg-black/30 border border-white/5 text-center">
+              <div className="text-[10px] uppercase font-mono text-gray-400">Public Repos</div>
+              <div className="text-xl font-bold text-white font-mono mt-0.5">7</div>
+            </div>
+            <div className="p-3 rounded-2xl bg-black/30 border border-white/5 text-center">
+              <div className="text-[10px] uppercase font-mono text-gray-400">Live Deployed</div>
+              <div className="text-xl font-bold text-cyan-400 font-mono mt-0.5">3 Apps</div>
+            </div>
+            <div className="p-3 rounded-2xl bg-black/30 border border-white/5 text-center">
+              <div className="text-[10px] uppercase font-mono text-gray-400">Core Languages</div>
+              <div className="text-sm font-bold text-white font-mono mt-1">TS & Python</div>
+            </div>
+            <div className="p-3 rounded-2xl bg-black/30 border border-white/5 text-center">
+              <div className="text-[10px] uppercase font-mono text-gray-400">Hackathon Win</div>
+              <div className="text-sm font-bold text-amber-300 font-mono mt-1">1st Place</div>
+            </div>
           </div>
 
           {/* Activity Heatmap Grid */}
@@ -166,22 +186,47 @@ export const GitHubSection: React.FC = () => {
         {/* Selected Repositories Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {GITHUB_REPOS.map((repo, idx) => (
-            <a
+            <div
               key={idx}
-              href={repo.url}
-              target="_blank"
-              rel="noopener noreferrer"
               className="bg-white/5 p-6 rounded-3xl border border-white/10 hover:border-cyan-500/40 transition-all flex flex-col justify-between group"
             >
               <div>
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <div className="flex items-center gap-2">
-                    <FolderGit2 className="w-4 h-4 text-cyan-400" />
-                    <h4 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors font-mono">
+                    <FolderGit2 className="w-4 h-4 text-cyan-400 shrink-0" />
+                    <a
+                      href={repo.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors font-mono hover:underline"
+                    >
                       {repo.name}
-                    </h4>
+                    </a>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-gray-500 group-hover:text-white transition-colors" />
+
+                  <div className="flex items-center gap-1.5">
+                    {repo.homepage && (
+                      <a
+                        href={repo.homepage}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-2.5 py-1 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-[11px] font-mono flex items-center gap-1 transition-all"
+                        title="Open Live Deployed Application"
+                      >
+                        <ExternalLink className="w-3 h-3" />
+                        <span>Live App</span>
+                      </a>
+                    )}
+                    <a
+                      href={repo.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+                      title="View GitHub Repository"
+                    >
+                      <ArrowUpRight className="w-4 h-4" />
+                    </a>
+                  </div>
                 </div>
 
                 <p className="text-xs sm:text-sm text-gray-400 leading-relaxed mb-4">
@@ -207,17 +252,29 @@ export const GitHubSection: React.FC = () => {
                 </span>
 
                 <div className="flex items-center gap-3">
-                  <span className="flex items-center gap-1">
-                    <Star className="w-3.5 h-3.5 text-amber-400" />
-                    {repo.stars}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <GitFork className="w-3.5 h-3.5 text-gray-400" />
-                    {repo.forks}
-                  </span>
+                  <a
+                    href={repo.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 hover:text-white transition-colors"
+                  >
+                    <Github className="w-3.5 h-3.5 text-gray-400" />
+                    <span>Repo</span>
+                  </a>
+                  {repo.homepage && (
+                    <a
+                      href={repo.homepage}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-cyan-400 hover:text-cyan-300 transition-colors"
+                    >
+                      <ExternalLink className="w-3 h-3" />
+                      <span>Live</span>
+                    </a>
+                  )}
                 </div>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>

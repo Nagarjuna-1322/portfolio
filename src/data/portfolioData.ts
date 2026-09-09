@@ -4,8 +4,8 @@ export const PERSONAL_INFO = {
   name: "NAGARJUNA REDDY",
   fullName: "Nagarjuna Reddy Mekala",
   profilePhoto: "/profile.jpg",
-  headline: "Building Digital Experiences with Code & AI",
-  tagline: "Developer • AI Enthusiast • Problem Solver",
+  headline: "Full-Stack Development & AI Engineering",
+  tagline: "Full-Stack Developer • AI & ML Enthusiast • Open-Source Prototyper",
   status: "Available for Internships & Opportunities",
   location: "Hyderabad, India",
   phone: "+91 7569304566",
@@ -14,7 +14,8 @@ export const PERSONAL_INFO = {
   githubUsername: "Nagarjuna-1322",
   linkedinUrl: "https://linkedin.com/in/m-nagarjuna-reddy-ab00b5323",
   resumePath: "/resume.pdf", // Easily replaceable resume file path
-  summary: "Detail-oriented and highly motivated Artificial Intelligence and Machine Learning (AI & ML) engineering student with a solid academic foundation and hands-on project experience. Possesses practical programming proficiency in Python alongside core understandings of AI methodologies. Demonstrates strong analytical thinking, problem-solving, and collaboration skills, eager to contribute to innovative technical projects.",
+  summary: "Engineering student and full-stack developer specializing in building scalable web applications with modern tools, clean code practices, and artificial intelligence. Possesses hands-on engineering experience spanning Python (FastAPI, spaCy NLP, scikit-learn), TypeScript, React, Next.js, and Generative AI pipelines with Google Gemini.",
+  bio: "Engineering student focused on full-stack development, building scalable web applications with modern tools and clean code practices.",
   languagesSpoken: [
     { name: "Telugu", level: "Native" },
     { name: "English", level: "Fluent" },
@@ -22,180 +23,159 @@ export const PERSONAL_INFO = {
   ],
   stats: [
     { label: "B.Tech CGPA", value: "7.75 / 10" },
-    { label: "Class XII", value: "95%" },
-    { label: "Hackathon Win", value: "1st Place" },
-    { label: "Certifications", value: "4+ Verified" }
+    { label: "Public Repos", value: "7 Repos" },
+    { label: "Live Deployed", value: "3 Apps" },
+    { label: "Hackathon Win", value: "1st Place" }
   ]
 };
 
 export const ABOUT_CARDS = [
   {
-    title: "Developer",
-    subtitle: "Full-Stack & Systems",
-    desc: "Building intuitive frontend applications with React and clean backend logic using Python & Node.js.",
+    title: "Full-Stack Developer",
+    subtitle: "Modern Web & APIs",
+    desc: "Building scalable web apps with React, Next.js, TypeScript, and clean backend APIs using FastAPI and Node.js.",
     icon: "Code2"
   },
   {
-    title: "AI Enthusiast",
-    subtitle: "LLMs & Applied ML",
-    desc: "Exploring modern Generative AI, prompt engineering with Gemini, and predictive machine learning models.",
-    icon: "Sparkles"
-  },
-  {
-    title: "Problem Solver",
-    subtitle: "Analytical & Creative",
-    desc: "Approaching real-world problems with algorithmic precision, rapid prototyping, and collaborative effort.",
+    title: "AI & ML Specialist",
+    subtitle: "spaCy NLP & Predictive ML",
+    desc: "Implementing TF-IDF matching models, spaCy resume parsing for 200+ skills, and predictive intelligence.",
     icon: "Brain"
   },
   {
-    title: "Continuous Learner",
-    subtitle: "Curious & Adaptable",
-    desc: "Constantly expanding skill set across cloud tools, modern web architectures, and advanced AI methodologies.",
+    title: "Generative AI Pioneer",
+    subtitle: "Gemini & Genkit Flows",
+    desc: "Engineering AI assistants, automated essay generation, and geospatial routing intelligence with Google Gemini.",
+    icon: "Sparkles"
+  },
+  {
+    title: "Product Prototyper",
+    subtitle: "Rapid Deployment & Cloud",
+    desc: "Deploying end-to-end applications to Vercel and Firebase with real-time Firestore synchronization and Docker.",
     icon: "Rocket"
   }
 ];
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    id: "programming",
-    name: "Programming",
+    id: "programming-backend",
+    name: "Programming & Backend",
     iconName: "Terminal",
-    description: "Core languages for algorithmic problem solving and backend computing.",
+    description: "Core languages and robust backend application architectures.",
     skills: [
       {
         name: "Python",
         proficiency: "Proficient",
-        description: "Primary language for Machine Learning, data processing, AI experimentation, and backend scripting.",
-        tags: ["Core", "AI/ML", "Scripts"],
+        description: "Primary language for Machine Learning, FastAPI backends, spaCy NLP pipelines, and data processing.",
+        tags: ["FastAPI", "AI/ML", "spaCy", "scikit-learn"],
+        highlight: true
+      },
+      {
+        name: "TypeScript / JavaScript",
+        proficiency: "Proficient",
+        description: "Type-safe modern web application logic, asynchronous flows, ES6+, and Node.js / Express microservices.",
+        tags: ["TypeScript", "ES6+", "Node.js", "Express"],
         highlight: true
       },
       {
         name: "Java",
         proficiency: "Intermediate",
-        description: "Solid foundational knowledge of Object-Oriented Programming (OOP), data structures, and algorithms.",
+        description: "Solid foundational knowledge of Object-Oriented Programming (OOP), algorithmic thinking, and data structures.",
         tags: ["OOP", "Data Structures"],
         highlight: false
-      },
-      {
-        name: "JavaScript",
-        proficiency: "Proficient",
-        description: "Modern ES6+ syntax, asynchronous programming, DOM manipulation, and interactive web application logic.",
-        tags: ["Web", "ES6+", "Async"],
-        highlight: true
       }
     ]
   },
   {
     id: "web-dev",
-    name: "Web Development",
+    name: "Web & Frontend",
     iconName: "Layout",
-    description: "Modern frontend technologies creating responsive, accessible user interfaces.",
+    description: "Modern frontend frameworks delivering responsive, dynamic, and accessible user experiences.",
     skills: [
       {
-        name: "React",
+        name: "React & Next.js",
         proficiency: "Proficient",
-        description: "Component-driven architecture, custom hooks, state management, and modern interactive UI workflows.",
-        tags: ["Frontend", "SPA", "Hooks"],
+        description: "Component architecture, server and client components, custom hooks, and full-stack interactive UIs.",
+        tags: ["React 19", "Next.js", "Vite", "SPA"],
         highlight: true
       },
       {
-        name: "TypeScript",
+        name: "Tailwind CSS & Styling",
         proficiency: "Proficient",
-        description: "Type-safe modern web application development, interface contracts, and scalable codebase architecture.",
-        tags: ["TypeScript", "Type Safety", "Frontend"],
+        description: "Utility-first design systems, responsive layouts, CSS3 animations, and sleek dark mode interfaces.",
+        tags: ["Tailwind 4", "Responsive", "UI/UX"],
         highlight: true
       },
       {
-        name: "HTML5",
+        name: "Data Viz & 3D Graphics",
         proficiency: "Proficient",
-        description: "Semantic web structure, accessibility (a11y) standards, and SEO-friendly document hierarchy.",
-        tags: ["Semantics", "SEO"],
-        highlight: false
-      },
-      {
-        name: "CSS3 / Styling",
-        proficiency: "Proficient",
-        description: "Modern responsive design, flexbox, grid, glassmorphism, Tailwind CSS, and keyframe animations.",
-        tags: ["Responsive", "Tailwind", "Design"],
-        highlight: false
+        description: "Interactive data charting with Recharts, interactive GIS maps with Leaflet, and WebGL 3D scenes with Three.js.",
+        tags: ["Three.js", "Leaflet", "Recharts"],
+        highlight: true
       }
     ]
   },
   {
     id: "ai-genai",
-    name: "AI / Generative AI",
+    name: "AI, ML & NLP",
     iconName: "BrainCircuit",
-    description: "Applied artificial intelligence, LLM orchestration, and predictive modeling.",
+    description: "Applied machine learning, NLP extraction, and generative AI orchestration.",
     skills: [
       {
-        name: "Generative AI",
+        name: "Generative AI & Gemini",
         proficiency: "Core Focus",
-        description: "Deep exploration of foundational GenAI concepts, model capabilities, reasoning frameworks, and multimodal architectures.",
-        tags: ["GenAI", "Foundations", "Google AI"],
+        description: "Google Gemini SDK, Genkit flows, multimodal prompting, structured JSON schema outputs, and agentic workflows.",
+        tags: ["Google Gemini", "Genkit", "Agents", "Prompting"],
         highlight: true
       },
       {
-        name: "AI APIs",
-        proficiency: "Proficient",
-        description: "Integrating modern AI model endpoints (Gemini API, OpenAI) into production web applications.",
-        tags: ["Integration", "REST", "SDKs"],
-        highlight: true
-      },
-      {
-        name: "Prompt Engineering",
-        proficiency: "Proficient",
-        description: "System instructions, few-shot prompting, structured JSON schema outputs, and chain-of-thought prompt tuning.",
-        tags: ["Gemini", "Optimization", "LLMs"],
-        highlight: true
-      },
-      {
-        name: "AI Application Development",
+        name: "NLP & spaCy",
         proficiency: "Core Focus",
-        description: "End-to-end development of AI-powered assistants, career recommenders, and scholarship finders.",
-        tags: ["Full Flow", "Products", "Solutions"],
+        description: "Natural Language Processing, entity extraction, PDF resume skill parsing (200+ technical skills), and tokenization.",
+        tags: ["spaCy", "NLP", "Text Mining"],
+        highlight: true
+      },
+      {
+        name: "scikit-learn & TF-IDF",
+        proficiency: "Proficient",
+        description: "Predictive modeling, TF-IDF vectorization, cosine similarity matching algorithms, and score ranking.",
+        tags: ["scikit-learn", "TF-IDF", "Cosine Sim"],
         highlight: true
       }
     ]
   },
   {
-    id: "cloud-tools",
-    name: "Cloud / Tools",
+    id: "cloud-devops",
+    name: "Cloud, Database & DevOps",
     iconName: "Cloud",
-    description: "Cloud infrastructure, version control, and modern developer tooling.",
+    description: "Cloud databases, containerization, deployment platforms, and developer tooling.",
     skills: [
-      {
-        name: "AWS",
-        proficiency: "Intermediate",
-        description: "Cloud fundamentals, compute instances, storage, and serverless application hosting concepts.",
-        tags: ["Cloud", "Deployment", "Storage"],
-        highlight: true
-      },
       {
         name: "Firebase",
         proficiency: "Proficient",
-        description: "Real-time Firestore databases, authentication, security rules, and cloud hosting for rapid prototyping.",
-        tags: ["NoSQL", "Real-time", "Auth"],
+        description: "Real-time Cloud Firestore, Firebase Authentication, security rules, and Firebase Hosting.",
+        tags: ["Firestore", "NoSQL", "Real-time", "Auth"],
         highlight: true
-      },
-      {
-        name: "Power BI",
-        proficiency: "Intermediate",
-        description: "Interactive data visualization, dashboard generation, and analytics reporting.",
-        tags: ["Analytics", "Dashboards"],
-        highlight: false
       },
       {
         name: "Git & GitHub",
         proficiency: "Proficient",
-        description: "Version control, branching workflows, pull requests, collaboration, and repository management.",
-        tags: ["VCS", "Collaboration", "CI/CD"],
-        highlight: false
+        description: "Branch management, pull requests, continuous open-source repository maintenance, and collaborative code reviews.",
+        tags: ["VCS", "GitHub", "Collaboration"],
+        highlight: true
       },
       {
-        name: "VS Code",
-        proficiency: "Proficient",
-        description: "Configured developer environment with linting, debugging, extension ecosystems, and terminal integration.",
-        tags: ["IDE", "Tooling"],
+        name: "Docker & Vercel",
+        proficiency: "Intermediate",
+        description: "Docker containerization for backend microservices and automated continuous production deployments on Vercel.",
+        tags: ["Docker", "Vercel", "CI/CD"],
+        highlight: true
+      },
+      {
+        name: "AWS & Power BI",
+        proficiency: "Intermediate",
+        description: "Fundamental cloud compute/storage concepts and business intelligence data dashboarding.",
+        tags: ["AWS", "Power BI", "Cloud"],
         highlight: false
       }
     ]
@@ -204,45 +184,89 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 
 export const PROJECTS: Project[] = [
   {
+    id: "terranex",
+    title: "TERRANEX – Smart Logistics & Accessibility Intelligence",
+    category: "AI / ML",
+    featured: true,
+    tagline: "AI-powered terrain accessibility intelligence & smart routing for India's North Eastern Region.",
+    description: "Engineered an AI-powered smart logistics and accessibility intelligence platform (Remix TerraNex) built to solve navigation and supply chain bottlenecks in challenging terrains. Combines Google GenAI (Gemini) routing intelligence with interactive Leaflet geospatial mapping, hazard avoidance heuristics, and environmental sensor telemetry.",
+    technologies: ["React 19", "TypeScript", "Google GenAI", "Leaflet Maps", "Express", "Tailwind CSS"],
+    githubUrl: "https://github.com/Nagarjuna-1322/TERRANEX",
+    liveDemoUrl: "https://github.com/Nagarjuna-1322/TERRANEX",
+    metrics: [
+      { label: "AI Engine", value: "Gemini SDK" },
+      { label: "Geospatial", value: "Leaflet GIS" },
+      { label: "Target Scope", value: "NER Terrain" }
+    ],
+    modalDetails: {
+      problem: "Logistics, disaster relief, and accessibility in rugged mountainous areas (like India's North Eastern Region) face severe delays due to landslides, unpredictable weather, and lack of real-time terrain intelligence.",
+      solution: "TERRANEX analyzes geographical topography, accessibility barriers, and dynamic route conditions using Gemini AI reasoning paired with high-performance Leaflet geospatial mapping to provide actionable navigation guidance.",
+      keyFeatures: [
+        "Interactive terrain and route mapping with custom GIS boundary overlays using Leaflet",
+        "AI-assisted accessibility intelligence analyzing risk factors, elevation, and road viability",
+        "Dynamic routing heuristics powered by Google GenAI models",
+        "Sensor telemetry integration (camera/geolocation interfaces) for real-time reporting",
+        "Responsive, high-contrast dashboard with live status indicators and telemetry cards"
+      ],
+      techStackDetails: [
+        { category: "Frontend & UI", tools: ["React 19", "TypeScript", "Tailwind CSS", "Motion", "Lucide Icons"] },
+        { category: "Geospatial & Mapping", tools: ["Leaflet", "@types/leaflet", "OpenStreetMap GIS Tile Engine"] },
+        { category: "AI & Intelligence", tools: ["Google GenAI (Gemini SDK)", "Terrain Risk Heuristics"] },
+        { category: "Backend / Services", tools: ["Express", "Node.js", "RESTful Routing APIs"] }
+      ],
+      developmentProcess: [
+        "Studied terrain navigation and supply challenges unique to high-altitude and rugged environments.",
+        "Constructed the geospatial map viewport utilizing Leaflet with smooth interactive controls.",
+        "Integrated the Google GenAI TypeScript SDK on the server side to analyze route risks and synthesize accessibility advisories.",
+        "Designed real-time metrics dashboards displaying weather impact, slope difficulty, and transit feasibility."
+      ],
+      architectureHighlights: [
+        "Full-stack architecture with Express proxying Gemini API requests securely",
+        "Lightweight Leaflet vector rendering preventing UI lag on high zoom levels",
+        "Modular terrain risk scoring algorithm"
+      ]
+    }
+  },
+  {
     id: "scholar-ai",
     title: "ScholarAI – AI-Based Scholarship Finder",
     category: "AI / ML",
     featured: true,
-    tagline: "AI-powered educational assistant streamlining scholarship discovery and funding for students.",
-    description: "Developed and deployed an AI-assisted web application designed to streamline the scholarship discovery process for students by consolidating government and private funding opportunities. Integrated responsive front-end components with a secure Firebase database to manage and retrieve real-time scholarship updates efficiently.",
-    technologies: ["React.js", "Firebase", "JavaScript", "HTML5", "CSS3", "AI APIs"],
-    githubUrl: "https://github.com/Nagarjuna-1322",
-    liveDemoUrl: "https://github.com/Nagarjuna-1322",
+    tagline: "AI educational assistant featuring natural language scholarship discovery and automated essay drafts.",
+    description: "Developed and deployed a production web platform helping students navigate scholarship opportunities with Gemini AI and Genkit. Features natural language search, personalized eligibility matching explanations, automated draft essay synthesis, and real-time Firebase Firestore data synchronization.",
+    technologies: ["Next.js", "React", "TypeScript", "Google Gemini", "Genkit", "Tailwind CSS", "Firebase", "Zod"],
+    githubUrl: "https://github.com/Nagarjuna-1322/scholar-ai",
+    liveDemoUrl: "https://scholar-ai-seven-lac.vercel.app",
     metrics: [
-      { label: "Database", value: "Real-time Firebase" },
-      { label: "Focus", value: "Scholarship Matching" },
-      { label: "Frontend", value: "React + Tailwind" }
+      { label: "AI Engine", value: "Gemini + Genkit" },
+      { label: "Feature", value: "Essay Generator" },
+      { label: "Deployment", value: "Live on Vercel" }
     ],
     modalDetails: {
-      problem: "Students frequently miss out on critical government and private financial grants because scholarship opportunities are scattered across hundreds of disparate portals with inconsistent eligibility criteria.",
-      solution: "ScholarAI consolidates scholarship opportunities into an intelligent, centralized platform. It uses AI assistance to parse requirements and match students with optimal funding opportunities based on their academic qualifications.",
+      problem: "Students frequently miss out on critical government and private financial grants because scholarship opportunities are scattered across hundreds of disparate portals with complex, legalistic eligibility criteria.",
+      solution: "ScholarAI consolidates scholarship opportunities into an intelligent, centralized platform. It uses Gemini AI and Genkit to parse requirements, match students with optimal funding opportunities, and even draft tailored application essays.",
       keyFeatures: [
-        "Real-time scholarship search and filtering by merit, category, and eligibility",
-        "AI-assisted eligibility advisor providing clear qualification checklists",
+        "Natural language scholarship queries powered by Google Gemini and Genkit",
+        "Personalized eligibility advisor providing clear qualification checklists and match percentages",
+        "Automated AI Scholarship Essay Generator crafting customized, high-quality application drafts",
         "Secure Firebase Firestore backend delivering instant updates on deadlines and applications",
-        "Clean, responsive interface optimized for mobile and desktop learners",
-        "Saved applications tracker to never miss a submission deadline"
+        "Saved applications tracker to ensure students never miss an upcoming submission deadline"
       ],
       techStackDetails: [
-        { category: "Frontend", tools: ["React.js", "JavaScript (ES6+)", "HTML5", "CSS3"] },
-        { category: "Database & Backend", tools: ["Firebase Firestore", "Firebase Authentication"] },
-        { category: "AI & Intelligence", tools: ["Generative AI Prompts", "AI APIs for eligibility parsing"] }
+        { category: "Frontend & Full Stack", tools: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Lucide React"] },
+        { category: "AI & Generation", tools: ["Google Gemini API", "Genkit", "Prompt Engineering", "Zod Validation"] },
+        { category: "Backend & Database", tools: ["Firebase Firestore", "Firebase Authentication", "Vercel Serverless"] }
       ],
       developmentProcess: [
-        "Conducted user requirement analysis among university students to identify discovery bottlenecks.",
-        "Engineered the responsive React frontend with intuitive filter facets.",
-        "Integrated Firebase Firestore with real-time listeners for live updates.",
-        "Embedded AI prompt flows to summarize dense legal scholarship guidelines into concise bullet points."
+        "Engineered the responsive Next.js frontend with intuitive natural language search input.",
+        "Integrated Firebase Firestore with real-time listeners for instantaneous updates on deadlines.",
+        "Constructed Gemini prompt chains via Genkit to extract criteria and generate structured essay drafts.",
+        "Deployed to Vercel with automated CI/CD pipeline and environment secret shielding."
       ],
       architectureHighlights: [
         "Real-time database sync for instant status updates",
-        "Decoupled client architecture with modular components",
-        "Optimized client-side caching for instant search responses"
+        "Type-safe schema validation using Zod for AI output predictability",
+        "Deployed production build running on Vercel"
       ]
     }
   },
@@ -251,78 +275,123 @@ export const PROJECTS: Project[] = [
     title: "AI-Driven Career Path Predictor",
     category: "AI / ML",
     featured: true,
-    tagline: "Predictive ML guidance system recommending tailored career trajectories based on academic profile.",
-    description: "Engineered an intelligent career guidance system utilizing predictive machine learning models to analyze user interests, skills, and academic backgrounds to recommend optimal career trajectories. Spearheaded full-stack implementation, designing an intuitive React interface backed by a Node.js server to deliver instantaneous, personalized recommendations.",
-    technologies: ["Python", "Machine Learning", "React.js", "Node.js", "Firebase"],
-    githubUrl: "https://github.com/Nagarjuna-1322",
-    liveDemoUrl: "https://github.com/Nagarjuna-1322",
+    tagline: "ML platform with spaCy resume parsing, TF-IDF skill matching, and personalized 6-12 month roadmaps.",
+    description: "Full-stack intelligent career guidance platform that parses PDF resumes using spaCy NLP (extracting 200+ technical skills), matches user vectors against 15+ career paths via TF-IDF vectorization and cosine similarity, and synthesizes 6-12 month personalized learning roadmaps with Recharts data visualizers.",
+    technologies: ["Python", "FastAPI", "spaCy NLP", "scikit-learn", "React", "Recharts", "Firebase", "Docker"],
+    githubUrl: "https://github.com/Nagarjuna-1322/carrer-path-prdictor",
+    liveDemoUrl: "https://carrer-path-prdictor.vercel.app",
     metrics: [
-      { label: "ML Engine", value: "Python Scikit" },
-      { label: "Architecture", value: "Full-Stack" },
-      { label: "Guidance", value: "Personalized" }
+      { label: "NLP Extraction", value: "200+ Skills (spaCy)" },
+      { label: "ML Matching", value: "TF-IDF + Cosine" },
+      { label: "Status", value: "Live on Vercel" }
     ],
     modalDetails: {
-      problem: "Early engineering and university students often struggle with selecting specialized career pathways that align with their dynamic skill progression and market demand.",
-      solution: "An intelligent assessment platform that evaluates a candidate's technical skills, interests, and academic performance, executing predictive machine learning models to recommend tailored career roadmaps.",
+      problem: "Students and early professionals struggle to identify which technology careers best fit their existing skills and lack structured, month-by-month roadmaps to bridge their technical gaps.",
+      solution: "A machine-learning career guidance platform that extracts skills directly from uploaded resumes or manual input, compares them mathematically against industry role vectors, and generates a personalized learning plan.",
       keyFeatures: [
-        "Multifaceted skill and interest assessment questionnaire",
-        "Predictive career trajectory scoring engine powered by ML algorithms",
-        "Interactive skill gap analysis highlighting essential technologies to learn next",
-        "Full-stack architecture with React UI and Node.js backend orchestration",
-        "Customized step-by-step career milestones and resource recommendations"
+        "PDF Resume Parser extracting 200+ technical skills automatically using spaCy NLP entity recognition",
+        "Machine Learning Career Matching using TF-IDF vectorization and cosine similarity across 15+ career paths",
+        "Interactive Skill Gap Analysis detailing strengths, missing competencies, and high-value certifications",
+        "Dynamic 6-12 month personalized learning roadmap with curated courses, documentation, and milestones",
+        "Demo Mode with preloaded profiles (Beginner Python, Frontend Dev, Data Analyst) for immediate testing"
       ],
       techStackDetails: [
-        { category: "Machine Learning & Logic", tools: ["Python", "Machine Learning Algorithms", "Data Modeling"] },
-        { category: "Frontend", tools: ["React.js", "Tailwind CSS", "Interactive Charts"] },
-        { category: "Backend & Data", tools: ["Node.js", "Firebase", "REST APIs"] }
+        { category: "ML & NLP Backend", tools: ["Python 3.9+", "FastAPI", "spaCy NLP", "scikit-learn (TF-IDF)", "PyPDF2"] },
+        { category: "Frontend UI", tools: ["React 18", "TypeScript", "Tailwind CSS", "Recharts", "Lucide React"] },
+        { category: "Database & Auth", tools: ["Firebase Firestore", "Firebase Authentication"] },
+        { category: "DevOps & Infrastructure", tools: ["Docker", "Vercel", "Uvicorn"] }
       ],
       developmentProcess: [
-        "Curated career trajectory datasets combining skill vectors and industry roles.",
-        "Built predictive models in Python to calculate career fitness scores.",
-        "Developed a Node.js server endpoint to process input vectors and interface with models.",
-        "Designed a sleek, gamified React frontend for an engaging student assessment experience."
+        "Trained and configured spaCy pattern matching to identify over 200 software and AI skill keywords.",
+        "Constructed TF-IDF vectorizers and cosine distance scoring algorithms for 15+ canonical career paths.",
+        "Built FastAPI backend endpoints with Pydantic schemas and CORS configuration.",
+        "Created an interactive React dashboard with Recharts skill radar and step-by-step roadmap milestones."
       ],
       architectureHighlights: [
-        "Low-latency recommendation pipeline",
-        "Dynamic skill gap mapping visualization",
-        "Scalable REST API communication between React and backend services"
+        "Sub-second NLP resume skill extraction and vector similarity scoring",
+        "Clean separation between FastAPI ML service and responsive React frontend",
+        "Real-time Firestore user profile synchronization and saved roadmap history"
       ]
     }
   },
   {
-    id: "ai-prompt-studio",
-    title: "Gemini Prompt & AI Workflow Explorer",
+    id: "protfolio-3d",
+    title: "Interactive 3D Engineering Portfolio",
     category: "Web Development",
     featured: false,
-    tagline: "Interactive playground for experimenting with LLM prompt structures, token generation, and system instructions.",
-    description: "A hands-on developer utility demonstrating practical LLM prompt engineering, few-shot conditioning, and structured JSON output parsing using modern Generative AI techniques.",
-    technologies: ["JavaScript", "React.js", "AI APIs", "Generative AI", "CSS3"],
-    githubUrl: "https://github.com/Nagarjuna-1322",
-    liveDemoUrl: "https://github.com/Nagarjuna-1322",
+    tagline: "Modern 3D portfolio featuring Three.js WebGL canvas, Lenis inertial scroll, and Firebase visitor tracking.",
+    description: "Architected a high-performance 3D developer portfolio showcasing interactive WebGL experiences, ATS-optimized resume exports, real-time Firebase telemetry, and a futuristic dark cyber aesthetic.",
+    technologies: ["React 19", "Three.js", "TypeScript", "Tailwind CSS", "Motion", "Lenis", "Firebase"],
+    githubUrl: "https://github.com/Nagarjuna-1322/protfolio",
+    liveDemoUrl: "https://protfolio-7iup.vercel.app/",
     metrics: [
-      { label: "Focus", value: "Prompt Engineering" },
-      { label: "Platform", value: "Web Application" }
+      { label: "3D Visuals", value: "Three.js WebGL" },
+      { label: "Scroll Feel", value: "Lenis Smooth" },
+      { label: "Analytics", value: "Real-time Firebase" }
     ],
     modalDetails: {
-      problem: "Developers and students need an intuitive way to test system prompts, model temperatures, and structured JSON schemas when integrating LLM APIs.",
-      solution: "Created an interactive testing interface for structured prompt formatting, token inspection, and immediate output comparison.",
+      problem: "Traditional developer resumes and flat portfolio websites fail to visually demonstrate frontend graphics capability, performance optimization, and interactive state management.",
+      solution: "Built a fully immersive, interactive portfolio integrating 3D WebGL scenes, smooth scroll physics, and comprehensive engineering project breakdowns.",
       keyFeatures: [
-        "Prompt template library with role-based system definitions",
-        "Structured output validation against JSON schemas",
-        "Zero-shot vs few-shot comparison view",
-        "Clean dark-mode interface with code copy and export utilities"
+        "Interactive 3D Holographic Quantum Core and rotating 3D orbital skill spheres built with Three.js",
+        "Lenis inertial smooth scrolling delivering high-framerate visual transitions",
+        "ATS-optimized interactive Resume Modal with one-click print, copy, and PDF download",
+        "Real-time Firebase Firestore visitor telemetry counter and security rules",
+        "Responsive, mobile-friendly design with fluid touch controls"
       ],
       techStackDetails: [
-        { category: "Frontend", tools: ["React.js", "JavaScript (ES6+)", "Tailwind CSS"] },
-        { category: "AI & Logic", tools: ["Generative AI APIs", "Prompt Structuring"] }
+        { category: "Frontend & 3D", tools: ["React 19", "Three.js", "TypeScript", "Motion", "Tailwind CSS"] },
+        { category: "Smooth Scroll", tools: ["@studio-freight/lenis", "Custom scroll hooks"] },
+        { category: "Database & Backend", tools: ["Firebase Firestore", "Vite", "Vercel"] }
       ],
       developmentProcess: [
-        "Implemented flexible schema builders for rapid API experimentation.",
-        "Added real-time validation and response formatting."
+        "Modeled mathematical particle clouds, icosahedron meshes, and ring geometries in Three.js.",
+        "Integrated Lenis smooth scrolling for cinematic page navigation.",
+        "Built ATS-compliant structured resume view with copy-to-clipboard functionality.",
+        "Configured atomic visitor counting in Cloud Firestore."
       ],
       architectureHighlights: [
-        "Client-side state management with local persistence",
-        "Modular prompt serializer"
+        "Optimized WebGL render loops pausing when canvas elements are offscreen",
+        "Sub-second page load times with asset lazy-loading",
+        "Zero layout shifts across desktop and mobile viewports"
+      ]
+    }
+  },
+  {
+    id: "python-algorithms",
+    title: "Python Core & Algorithmic Computing",
+    category: "Full Stack",
+    featured: false,
+    tagline: "Curated repository of Python algorithms, data structures, and computational problem solving.",
+    description: "Open-source codebase showcasing idiomatic Python programming, algorithmic computing, recursion, object-oriented design patterns, and utility scripts.",
+    technologies: ["Python 3", "Data Structures", "Algorithms", "OOP", "Scripts"],
+    githubUrl: "https://github.com/Nagarjuna-1322/python",
+    liveDemoUrl: "https://github.com/Nagarjuna-1322/python",
+    metrics: [
+      { label: "Language", value: "Python 3" },
+      { label: "Codebase", value: "Open Source" },
+      { label: "Focus", value: "Data Structures" }
+    ],
+    modalDetails: {
+      problem: "Mastering complex machine learning algorithms and technical coding assessments requires continuous, disciplined algorithmic problem solving in Python.",
+      solution: "Created a structured repository implementing core data structures, algorithms, and computational problem-solving workflows with clean, documented code.",
+      keyFeatures: [
+        "Implementation of core data structures: linked lists, trees, graphs, heaps, and hash maps",
+        "Sorting, searching, and dynamic programming algorithm implementations",
+        "Clean, PEP 8 compliant code structure with comprehensive comments",
+        "Practical helper scripts for data parsing, file transformations, and automation"
+      ],
+      techStackDetails: [
+        { category: "Language & Runtimes", tools: ["Python 3.9+", "Standard Library"] },
+        { category: "Concepts", tools: ["Data Structures", "Dynamic Programming", "Recursion", "OOP"] }
+      ],
+      developmentProcess: [
+        "Solved and documented algorithmic problems covering multiple complexity classes.",
+        "Structured modular packages for reusable data structure classes."
+      ],
+      architectureHighlights: [
+        "Clean algorithmic complexity analysis (time and space complexity)",
+        "Zero-dependency pure Python implementations"
       ]
     }
   }
@@ -444,44 +513,77 @@ export const CERTIFICATIONS: Certification[] = [
 
 export const GITHUB_REPOS: GithubRepoInfo[] = [
   {
-    name: "ScholarAI-Finder",
-    description: "AI-based scholarship discovery platform with real-time Firebase backend and intelligent eligibility assistance.",
-    stars: 12,
-    forks: 4,
-    language: "JavaScript / React",
-    url: "https://github.com/Nagarjuna-1322",
-    topics: ["react", "firebase", "scholarship-finder", "ai-assistant"],
-    updatedAt: "2024"
+    name: "TERRANEX",
+    description: "AI-Powered Smart Logistics & Accessibility Intelligence (Remix TerraNex) with Google GenAI & Leaflet GIS.",
+    stars: 1,
+    forks: 0,
+    language: "TypeScript / React",
+    url: "https://github.com/Nagarjuna-1322/TERRANEX",
+    topics: ["logistics", "ai", "gemini-api", "leaflet", "accessibility", "typescript"],
+    updatedAt: "2026"
   },
   {
-    name: "AI-Career-Path-Predictor",
-    description: "Intelligent career path recommendation engine combining Python ML models with React and Node.js.",
-    stars: 15,
-    forks: 6,
-    language: "Python / React",
-    url: "https://github.com/Nagarjuna-1322",
-    topics: ["machine-learning", "python", "career-predictor", "fullstack"],
-    updatedAt: "2024"
+    name: "scholar-ai",
+    description: "AI-powered scholarship discovery and application assistant with Gemini AI, Genkit, and automated essay drafts.",
+    stars: 1,
+    forks: 0,
+    language: "TypeScript / Next.js",
+    url: "https://github.com/Nagarjuna-1322/scholar-ai",
+    homepage: "https://scholar-ai-seven-lac.vercel.app",
+    topics: ["scholarship-finder", "gemini", "genkit", "nextjs", "firebase", "zod"],
+    updatedAt: "2026"
   },
   {
-    name: "AI-ML-Foundations",
-    description: "Curated implementations of machine learning algorithms, prompt engineering patterns, and data visualizations in Python.",
-    stars: 9,
-    forks: 2,
-    language: "Python",
-    url: "https://github.com/Nagarjuna-1322",
-    topics: ["python", "machine-learning", "algorithms", "prompt-engineering"],
-    updatedAt: "2024"
+    name: "carrer-path-prdictor",
+    description: "AI-driven career path predictor with spaCy NLP resume parser, TF-IDF skill matching, and personalized 6-12 month roadmaps.",
+    stars: 1,
+    forks: 0,
+    language: "Python / FastAPI",
+    url: "https://github.com/Nagarjuna-1322/carrer-path-prdictor",
+    homepage: "https://carrer-path-prdictor.vercel.app",
+    topics: ["machine-learning", "spacy", "career-predictor", "fastapi", "react", "scikit-learn"],
+    updatedAt: "2026"
   },
   {
-    name: "Nagarjuna-1322",
-    description: "Developer profile repository and portfolio showcase of Nagarjuna Reddy.",
-    stars: 8,
-    forks: 1,
-    language: "Markdown / React",
-    url: "https://github.com/Nagarjuna-1322",
-    topics: ["portfolio", "nagarjuna-reddy", "developer-profile"],
-    updatedAt: "2024"
+    name: "protfolio",
+    description: "Interactive 3D developer portfolio website with Three.js WebGL scenes, Lenis smooth scrolling, and Firebase Firestore.",
+    stars: 1,
+    forks: 0,
+    language: "TypeScript / React 19",
+    url: "https://github.com/Nagarjuna-1322/protfolio",
+    homepage: "https://protfolio-7iup.vercel.app/",
+    topics: ["threejs", "portfolio", "react", "motion", "firebase", "tailwind"],
+    updatedAt: "2026"
+  },
+  {
+    name: "python",
+    description: "Core Python algorithms, data structures, clean idiomatic scripts, and computational problem-solving routines.",
+    stars: 0,
+    forks: 0,
+    language: "Python 3",
+    url: "https://github.com/Nagarjuna-1322/python",
+    topics: ["python", "algorithms", "data-structures", "clean-code"],
+    updatedAt: "2026"
+  },
+  {
+    name: "practise",
+    description: "Interactive front-end web development exercises, responsive components, and modern JavaScript experiments.",
+    stars: 0,
+    forks: 0,
+    language: "JavaScript / HTML",
+    url: "https://github.com/Nagarjuna-1322/practise",
+    topics: ["html", "css", "javascript", "web-development"],
+    updatedAt: "2026"
+  },
+  {
+    name: "nagarjuna",
+    description: "Special GitHub profile repository with developer stats, technical roadmap, and background overview.",
+    stars: 0,
+    forks: 0,
+    language: "Markdown",
+    url: "https://github.com/Nagarjuna-1322/nagarjuna",
+    topics: ["profile", "nagarjuna-reddy", "developer-profile"],
+    updatedAt: "2026"
   }
 ];
 

@@ -66,6 +66,7 @@ export interface GithubRepoInfo {
   forks: number;
   language: string;
   url: string;
+  homepage?: string;
   topics: string[];
   updatedAt: string;
 }

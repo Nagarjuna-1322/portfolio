@@ -56,14 +56,16 @@ EDUCATION:
 - Sri Chaitanya Techno School — Class X SSC (CGPA 9.8/10.0, Passed 2022)
 
 TECHNICAL SKILLS:
-- Languages: Python (Proficient), Java (Basic), JavaScript
-- Web Development: React, JavaScript, HTML5, CSS3/Tailwind
-- AI & GenAI: Generative AI, AI APIs, Prompt Engineering, Gemini LLM, ML Fundamentals
-- Cloud & Tools: AWS, Firebase, Power BI, Git, GitHub, VS Code
+- Languages: Python (Proficient), TypeScript, JavaScript, Java (Basic)
+- Web & Frontend: React 19, Next.js, Tailwind CSS, Leaflet Maps, Three.js, HTML5/CSS3
+- AI, ML & NLP: Google Gemini SDK, Genkit, spaCy NLP (200+ skill parsing), scikit-learn (TF-IDF vectorization), Prompt Engineering
+- Backend & Cloud: FastAPI, Node.js, Express, Firebase (Firestore, Auth), Docker, Vercel, Git, GitHub
 
-ACADEMIC PROJECTS:
-1. ScholarAI – AI-Based Scholarship Finder (React, Firebase, JavaScript, HTML5, CSS3)
-2. AI-Driven Career Path Predictor (Python, Machine Learning, React, Node.js, Firebase)
+FEATURED PROJECTS:
+1. TERRANEX – Smart Logistics & Accessibility Intelligence (React 19, TypeScript, Google GenAI, Leaflet Maps, Express)
+2. ScholarAI – AI-Based Scholarship Finder (Next.js, React, Google Gemini, Genkit, Firebase, Vercel)
+3. AI-Driven Career Path Predictor (Python, FastAPI, spaCy NLP, scikit-learn, React, Recharts, Docker)
+4. Interactive 3D Engineering Portfolio (React 19, Three.js, TypeScript, Lenis, Firebase, Tailwind CSS)
 
 AWARDS & CERTIFICATIONS:
 - 1st Place Winner: Tech Titans 24-Hour Rapid Prototyping Hackathon
@@ -246,45 +248,56 @@ AWARDS & CERTIFICATIONS:
             </h2>
             <div className="space-y-1 text-xs sm:text-sm text-slate-800">
               <div>
-                <strong className="text-slate-900">Languages:</strong> Python (Proficient), Java (Basic), JavaScript
+                <strong className="text-slate-900">Languages:</strong> Python (Proficient), TypeScript, JavaScript, Java (Basic)
               </div>
               <div>
-                <strong className="text-slate-900">Web Development:</strong> React.js, JavaScript, HTML5, CSS3, Node.js
+                <strong className="text-slate-900">Web & Frontend:</strong> React 19, Next.js, Tailwind CSS, Leaflet Maps, Three.js, HTML5/CSS3
               </div>
               <div>
-                <strong className="text-slate-900">Data & Cloud Tools:</strong> Firebase, Power BI, AWS, Git, GitHub, VS Code
+                <strong className="text-slate-900">AI, ML & NLP:</strong> Google Gemini SDK, Genkit, spaCy NLP (200+ skill extraction), scikit-learn (TF-IDF), Prompt Engineering
               </div>
               <div>
-                <strong className="text-slate-900">Focus Areas:</strong> Artificial Intelligence, Machine Learning Fundamentals, Generative AI, Large Language Model (LLM) Prompting, Prompt Engineering
+                <strong className="text-slate-900">Backend & Cloud:</strong> FastAPI, Node.js, Express, Firebase Firestore & Auth, Docker, Vercel, Git & GitHub
               </div>
             </div>
           </div>
 
-          {/* Section 4: Academic Projects */}
+          {/* Section 4: Projects */}
           <div className="mb-5">
             <h2 className="text-xs font-extrabold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2">
-              Academic Projects
+              Key Engineering Projects
             </h2>
             <div className="space-y-3 text-xs sm:text-sm">
               <div>
                 <div className="font-bold text-slate-900 flex justify-between">
-                  <span>ScholarAI – AI-Based Scholarship Finder</span>
-                  <span className="text-slate-700 font-normal italic">React.js, Firebase, JavaScript, HTML, CSS</span>
+                  <span>TERRANEX – Smart Logistics & Accessibility Intelligence</span>
+                  <span className="text-slate-700 font-normal italic">React 19, TypeScript, Google GenAI, Leaflet, Express</span>
                 </div>
                 <ul className="list-disc list-inside text-slate-800 space-y-0.5 mt-1">
-                  <li>Developed and deployed an AI-assisted web application designed to streamline the scholarship discovery process for students by consolidating government and private funding opportunities.</li>
-                  <li>Integrated responsive front-end components with a secure Firebase database to manage and retrieve real-time scholarship updates efficiently.</li>
+                  <li>Engineered an AI-powered smart logistics platform solving supply chain and route accessibility challenges across complex terrains in North Eastern India.</li>
+                  <li>Integrated interactive GIS mapping using Leaflet and automated route hazard heuristics synthesized through Google Gemini AI SDK.</li>
+                </ul>
+              </div>
+
+              <div>
+                <div className="font-bold text-slate-900 flex justify-between">
+                  <span>ScholarAI – AI-Based Scholarship Finder</span>
+                  <span className="text-slate-700 font-normal italic">Next.js, React, Google Gemini, Genkit, Firebase</span>
+                </div>
+                <ul className="list-disc list-inside text-slate-800 space-y-0.5 mt-1">
+                  <li>Built and deployed an AI platform featuring natural language scholarship discovery and automated personalized application essay drafting.</li>
+                  <li>Integrated Firebase Firestore with real-time listeners and deployed continuous CI/CD build to Vercel.</li>
                 </ul>
               </div>
 
               <div>
                 <div className="font-bold text-slate-900 flex justify-between">
                   <span>AI-Driven Career Path Predictor</span>
-                  <span className="text-slate-700 font-normal italic">Python, Machine Learning, React.js, Node.js, Firebase</span>
+                  <span className="text-slate-700 font-normal italic">Python, FastAPI, spaCy NLP, scikit-learn, React</span>
                 </div>
                 <ul className="list-disc list-inside text-slate-800 space-y-0.5 mt-1">
-                  <li>Engineered an intelligent career guidance system utilizing predictive machine learning models to analyze user interests, skills, and academic backgrounds to recommend optimal career trajectories.</li>
-                  <li>Spearheaded full-stack implementation, designing an intuitive React interface backed by a Node.js server to deliver instantaneous, personalized recommendations.</li>
+                  <li>Engineered full-stack career advisor with spaCy NLP parsing 200+ skills from uploaded PDF resumes and matching them to 15+ career paths via TF-IDF vectorization and cosine similarity.</li>
+                  <li>Created responsive React dashboard with Recharts skill radar and personalized 6-12 month learning roadmaps.</li>
                 </ul>
               </div>
             </div>
