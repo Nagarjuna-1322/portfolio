@@ -11,19 +11,34 @@ import {
 } from 'firebase/firestore';
 import firebaseConfig from '../../firebase-applet-config.json';
 
+interface FirebaseAppletConfig {
+  projectId: string;
+  appId: string;
+  authDomain?: string;
+  firestoreDatabaseId?: string;
+  storageBucket?: string;
+  messagingSenderId?: string;
+  measurementId?: string;
+  oAuthClientId?: string;
+  recaptchaSiteKey?: string;
+  apiKey?: string;
+}
+
+const config = firebaseConfig as FirebaseAppletConfig;
+
 // Initialize Firebase App
 const app = getApps().length === 0 ? initializeApp({
-  apiKey: firebaseConfig.apiKey,
-  authDomain: firebaseConfig.authDomain,
-  projectId: firebaseConfig.projectId,
-  storageBucket: firebaseConfig.storageBucket,
-  messagingSenderId: firebaseConfig.messagingSenderId,
-  appId: firebaseConfig.appId,
+  apiKey: config.apiKey || (typeof process !== 'undefined' ? process.env?.FIREBASE_API_KEY : undefined) || '',
+  authDomain: config.authDomain,
+  projectId: config.projectId,
+  storageBucket: config.storageBucket,
+  messagingSenderId: config.messagingSenderId,
+  appId: config.appId,
 }) : getApp();
 
 // Initialize Firestore with custom database ID if specified
-export const db = firebaseConfig.firestoreDatabaseId && firebaseConfig.firestoreDatabaseId !== '(default)'
-  ? getFirestore(app, firebaseConfig.firestoreDatabaseId)
+export const db = config.firestoreDatabaseId && config.firestoreDatabaseId !== '(default)'
+  ? getFirestore(app, config.firestoreDatabaseId)
   : getFirestore(app);
 
 // Connection test as required by Firebase integration skill
