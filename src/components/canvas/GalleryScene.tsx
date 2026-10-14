@@ -4,7 +4,7 @@ import * as THREE from 'three';
 export const COLLECTIONS = [
   { title: 'Work', image: '/gallery/work.svg' },
   { title: 'AI', image: '/gallery/ai.svg' },
-  { title: 'Journey', image: '/profile.jpg' },
+  { title: 'Journey', image: '/gallery/journey.jpeg' },
 ];
 const TURN=Math.PI*2/3;
 const wrap=(value:number)=>((value%3)+3)%3;
@@ -47,8 +47,8 @@ export function GalleryScene({index,overview,reduced,active,explode,onStep,onOpe
         }
         ctx.fillStyle=i===0?'#213b3440':'#110e1625';ctx.fillRect(0,0,1800,1000);
         ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='260px "Times New Roman"';
-        ctx.shadowColor='#16101833';ctx.shadowBlur=3;ctx.fillStyle='#fffffff0';ctx.fillText(collection.title,900,505);ctx.shadowBlur=0;
-        ctx.lineWidth=.8;ctx.strokeStyle='#ffffff88';ctx.strokeText(collection.title,900,505);
+        ctx.shadowColor='#16101833';ctx.shadowBlur=3;ctx.fillStyle='#fffffff0';ctx.fillText(collection.title,900,i===2?760:505);ctx.shadowBlur=0;
+        ctx.lineWidth=.8;ctx.strokeStyle='#ffffff88';ctx.strokeText(collection.title,900,i===2?760:505);
         texture.needsUpdate=true;redraw.current();
       };
       draw();const image=new Image();image.onload=()=>{if(alive)draw(image);};image.src=collection.image;
