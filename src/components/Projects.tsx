@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Code2 } from 'lucide-react';
+
 import { PROJECTS } from '../data/portfolioData';
 import { ProjectCard } from './ProjectCard';
 import { ProjectModal } from './ProjectModal';
@@ -41,6 +41,7 @@ export const Projects: React.FC = () => {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
+                aria-pressed={selectedCategory === cat}
                 className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                   selectedCategory === cat
                     ? 'bg-cyan-500 text-black font-bold shadow-[0_0_15px_rgba(6,182,212,0.3)]'
@@ -64,13 +65,6 @@ export const Projects: React.FC = () => {
           ))}
         </div>
 
-        {/* Reusable Project Extensibility Note */}
-        <div className="mt-12 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs text-gray-400 font-mono">
-            <Code2 className="w-4 h-4 text-cyan-400" />
-            <span>Structured schema allows instant project addition via <code className="text-cyan-300 font-semibold">portfolioData.ts</code></span>
-          </div>
-        </div>
       </div>
 
       {/* Project Detail Modal */}

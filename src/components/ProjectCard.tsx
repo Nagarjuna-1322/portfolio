@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { ExternalLink, Github, ArrowUpRight, Sparkles, Cpu } from 'lucide-react';
+import { motion, useReducedMotion, useSpring } from 'motion/react';
 import { Project } from '../types';
 
 interface ProjectCardProps {
@@ -8,15 +9,16 @@ interface ProjectCardProps {
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenDetails }) => {
+  const reducedMotion = useReducedMotion();
   const cardRef = useRef<HTMLDivElement>(null);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
+  const rotateX = useSpring(0, { stiffness: 180, damping: 24 });
+  const rotateY = useSpring(0, { stiffness: 180, damping: 24 });
   const [glowX, setGlowX] = useState(50);
   const [glowY, setGlowY] = useState(50);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = cardRef.current;
-    if (!card) return;
+    if (!card || reducedMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
 
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -28,25 +30,31 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenDetails
     const rotX = -((y - centerY) / centerY) * 7;
     const rotY = ((x - centerX) / centerX) * 7;
 
-    setRotateX(rotX);
-    setRotateY(rotY);
+    rotateX.set(rotX);
+    rotateY.set(rotY);
     setGlowX((x / rect.width) * 100);
     setGlowY((y / rect.height) * 100);
   };
 
   const handleMouseLeave = () => {
-    setRotateX(0);
-    setRotateY(0);
+    rotateX.set(0);
+    rotateY.set(0);
   };
 
   return (
-    <div
+    <motion.div
+      layout={!reducedMotion}
+      initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.45 }}
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
-        transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-        transition: 'transform 0.15s ease-out',
+        rotateX: reducedMotion ? 0 : rotateX,
+        rotateY: reducedMotion ? 0 : rotateY,
+        transformPerspective: 1000,
       }}
       className={`relative rounded-3xl bg-white/5 p-6 sm:p-7 flex flex-col justify-between group overflow-hidden border transition-all ${
         project.featured
@@ -160,6 +168,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenDetails
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

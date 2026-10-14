@@ -35,7 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenResume }) =
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    scrollToElement(href, { offset: -40, duration: 1.2 });
+    scrollToElement(href, { offset: -110, duration: 1.2 });
   };
 
   return (
@@ -79,13 +79,14 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenResume }) =
           </a>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-1.5" aria-label="Main Navigation">
+          <nav className="hidden xl:flex items-center gap-1.5" aria-label="Main Navigation">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.replace('#', '');
               return (
                 <a
                   key={link.name}
                   href={link.href}
+                  aria-current={isActive ? "location" : undefined}
                   onClick={(e) => handleLinkClick(e, link.href)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-medium uppercase tracking-[0.15em] transition-all ${
                     isActive
@@ -121,7 +122,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenResume }) =
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="flex lg:hidden items-center gap-2">
+          <div className="flex xl:hidden items-center gap-2">
             <button
               id="mobile-resume-btn"
               onClick={onOpenResume}
@@ -137,6 +138,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenResume }) =
               className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 border border-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
               aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
               aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu-drawer"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -148,7 +150,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenResume }) =
       {mobileMenuOpen && (
         <div
           id="mobile-menu-drawer"
-          className="lg:hidden fixed inset-x-4 top-20 glass-panel bg-[#090d16]/95 border border-white/10 rounded-2xl p-5 shadow-2xl backdrop-blur-2xl z-50 animate-fade-in"
+          className="xl:hidden fixed inset-x-4 top-20 glass-panel bg-[#090d16]/95 border border-white/10 rounded-2xl p-5 shadow-2xl backdrop-blur-2xl z-50 animate-fade-in"
         >
           <div className="flex flex-col gap-2">
             {navLinks.map((link) => {
@@ -157,6 +159,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenResume }) =
                 <a
                   key={link.name}
                   href={link.href}
+                  aria-current={isActive ? "location" : undefined}
                   onClick={(e) => handleLinkClick(e, link.href)}
                   className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
                     isActive

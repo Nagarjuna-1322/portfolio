@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, MotionConfig, useScroll, useSpring } from 'motion/react';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -14,6 +15,8 @@ import { Footer } from './components/Footer';
 import { ResumeModal } from './components/ResumeModal';
 
 export default function App() {
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 160, damping: 30 });
   const [activeSection, setActiveSection] = useState<string>('home');
   const [resumeModalOpen, setResumeModalOpen] = useState<boolean>(false);
 
@@ -50,7 +53,10 @@ export default function App() {
   }, []);
 
   return (
+    <MotionConfig reducedMotion="user">
     <div className="min-h-screen bg-[#050505] text-[#e0e0e0] font-sans selection:bg-cyan-500/30 selection:text-cyan-200 relative overflow-x-hidden">
+      <a href="#main-content" className="skip-link">Skip to content</a>
+      <motion.div className="scroll-progress" style={{ scaleX: progress }} aria-hidden="true" />
       {/* Navigation */}
       <Navbar
         activeSection={activeSection}
@@ -58,7 +64,7 @@ export default function App() {
       />
 
       {/* Main Content Sections */}
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero onOpenResume={() => setResumeModalOpen(true)} />
         <About />
         <Skills />
@@ -79,5 +85,6 @@ export default function App() {
         onClose={() => setResumeModalOpen(false)}
       />
     </div>
+    </MotionConfig>
   );
 }
