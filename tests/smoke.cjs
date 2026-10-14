@@ -1,46 +1,63 @@
-// Run with Playwright installed in your test environment and the Vite preview running.
-// PORTFOLIO_URL defaults to http://127.0.0.1:3000; BROWSER_CHANNEL defaults to msedge.
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const Module = require('node:module');
+const ts = require('typescript');
 const { chromium } = require('playwright');
-(async () => {
-  const browser = await chromium.launch({ channel: process.env.BROWSER_CHANNEL || 'msedge', headless: true });
-  try {
-    const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
-    const errors = [];
-    page.on('pageerror', error => errors.push(error.message));
-    await page.goto(process.env.PORTFOLIO_URL || 'http://127.0.0.1:3000');
-    await page.locator('#hero-3d-canvas-container canvas').waitFor();
-    await page.locator('#hero-explore-btn').click();
-    await page.waitForFunction(() => Math.abs(document.querySelector('#projects').getBoundingClientRect().top - 110) < 8);
-    const filter = page.getByRole('button', { name: 'Full Stack', exact: true });
-    await filter.click();
-    assert.equal(await filter.getAttribute('aria-pressed'), 'true');
-    assert.ok(await page.locator('#projects h3').count() > 0);
-    await page.setViewportSize({ width: 390, height: 844 });
-    await page.emulateMedia({ reducedMotion: 'reduce' });
-    await page.locator('#mobile-menu-toggle-btn').click();
-    assert.equal(await page.locator('#mobile-menu-drawer').isVisible(), true);
-    await page.locator('#mobile-menu-drawer').getByRole('link', { name: 'Home', exact: true }).click();
-    assert.equal(await page.locator('#mobile-menu-drawer').count(), 0);
-    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
-    assert.equal(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior), 'auto');
-    await page.locator('#hero-resume-btn').click();
-    await page.keyboard.press('Escape');
-    assert.deepEqual(errors, []);
-    // WebGL is optional: content and navigation must still work without it.
-    await page.addInitScript(() => {
-      const original = HTMLCanvasElement.prototype.getContext;
-      HTMLCanvasElement.prototype.getContext = function(type, ...args) {
-        return type.startsWith('webgl') ? null : original.call(this, type, ...args);
-      };
-    });
-    await page.reload();
-    await page.locator('#hero-name-heading').waitFor();
-    await page.locator('#hero-explore-btn').click();
-    await page.waitForFunction(() => Math.abs(document.querySelector('#projects').getBoundingClientRect().top - 110) < 8);
-    assert.deepEqual(errors, []);
-    console.log('PASS: desktop, mobile, filters, anchor offsets, reduced motion, resume interaction, and WebGL fallback');
-  } finally {
-    await browser.close();
+const dataPath=path.resolve(__dirname,'../src/data/portfolioData.ts');
+const dataModule=new Module(dataPath);
+dataModule._compile(ts.transpileModule(fs.readFileSync(dataPath,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText,dataPath);
+const data=dataModule.exports;
+(async()=>{
+ const browser=await chromium.launch({channel:process.env.BROWSER_CHANNEL||'msedge',headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:1440,height:1000}});
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto(process.env.PORTFOLIO_URL||'http://127.0.0.1:3000');
+  await page.locator('.gallery-canvas canvas').waitFor();
+  assert.match(await page.locator('.collection-open img').getAttribute('src'),/work.svg$/);
+  await page.getByRole('button',{name:'Previous collection',exact:true}).click();
+  assert.equal(await page.getByRole('button',{name:'Explore Journey',exact:true}).count(),1);
+  await page.getByRole('button',{name:'Next collection',exact:true}).click();
+  await page.mouse.move(650,480);await page.mouse.down();await page.mouse.move(1150,490,{steps:25});await page.mouse.up();
+  await page.waitForTimeout(500);
+  assert.equal(await page.getByRole('button',{name:'Explore Journey',exact:true}).count(),1);
+  await page.getByRole('button',{name:'Toggle orbital view'}).click();
+  assert.equal(await page.getByRole('button',{name:'Toggle orbital view'}).getAttribute('aria-pressed'),'true');
+  await page.getByRole('button',{name:'Toggle orbital view'}).click();
+  await page.getByRole('button',{name:'Index',exact:true}).click();
+  await page.getByRole('navigation',{name:'All portfolio sections'}).getByRole('button',{name:'About',exact:false}).click();
+  await page.getByRole('heading',{name:'Nagarjuna Reddy.',exact:true}).waitFor();
+  const navigate=async(name,heading)=>{await page.getByRole('navigation',{name:'Portfolio details'}).getByRole('button',{name,exact:true}).click();await page.getByRole('heading',{name:heading,exact:true}).waitFor();};
+  const contains=async texts=>{const body=await page.locator('.detail-body').textContent();for(const text of texts)assert.ok(body.includes(text),`Missing content: ${text}`);};
+  await contains([data.PERSONAL_INFO.fullName,data.PERSONAL_INFO.bio,...data.ABOUT_CARDS.map(c=>c.desc),...data.PERSONAL_INFO.languagesSpoken.map(l=>l.name)]);
+  await navigate('Skills','The toolkit.');
+  await contains(data.SKILL_CATEGORIES.flatMap(c=>[c.description,...c.skills.flatMap(s=>[s.name,s.description,s.proficiency,...s.tags])]));
+  await navigate('Work','Selected work.');
+  assert.equal(await page.locator('.work-card').count(),data.PROJECTS.length);
+  await page.getByRole('button',{name:'Full Stack',exact:true}).click();assert.equal(await page.locator('.work-card').count(),1);
+  await page.getByRole('button',{name:'All',exact:true}).click();
+  await page.getByRole('button',{name:'Toggle project layout'}).click();assert.equal(await page.locator('.work-list').count(),1);
+  for(let i=0;i<data.PROJECTS.length;i++){
+   await page.locator('.work-card').nth(i).click();await page.getByRole('heading',{name:data.PROJECTS[i].title,exact:true}).waitFor();
+   const p=data.PROJECTS[i];await contains([p.description,...p.modalDetails.keyFeatures,...p.modalDetails.developmentProcess,...p.modalDetails.architectureHighlights,...p.modalDetails.techStackDetails.flatMap(s=>s.tools)]);
+   await page.getByRole('button',{name:'All projects',exact:true}).click();await page.getByRole('heading',{name:'Selected work.',exact:true}).waitFor();
   }
-})().catch(error => { console.error(error); process.exitCode = 1; });
+  await navigate('Journey','The journey.');await contains(data.JOURNEY_MILESTONES.flatMap(m=>[m.title,m.description,...m.achievements||[]]));
+  await navigate('Certifications','Always learning.');await contains(data.CERTIFICATIONS.flatMap(c=>[c.title,c.description,...c.skillsCovered]));
+  await navigate('GitHub','In the open.');assert.equal(await page.locator('.repository-list article').count(),data.GITHUB_REPOS.length);await contains(data.GITHUB_REPOS.flatMap(r=>[r.name,r.description,...r.topics]));
+  await navigate('Resume','Curriculum vitae.');await contains([data.PERSONAL_INFO.phone,data.PERSONAL_INFO.email,...data.PROJECTS.map(p=>p.title)]);
+  await page.evaluate(()=>{window.print=()=>{window.__printed=true;};});await page.getByRole('button',{name:'Print / Save as PDF'}).click();assert.equal(await page.evaluate(()=>window.__printed),true);
+  await page.emulateMedia({media:'print'});assert.equal(await page.locator('.resume-document').isVisible(),true);assert.equal(await page.locator('.detail-nav').isVisible(),false);await page.emulateMedia({media:'screen',reducedMotion:'reduce'});
+  await navigate('Contact','Let’s talk.');await contains([data.PERSONAL_INFO.phone,data.PERSONAL_INFO.email,data.PERSONAL_INFO.location]);
+  await page.getByLabel('Your name',{exact:true}).fill('Test visitor');await page.getByLabel('Your email',{exact:true}).fill('not-an-email');
+  assert.equal(await page.locator('.contact-form').evaluate(el=>el.checkValidity()),false);
+  await page.setViewportSize({width:390,height:844});assert.equal(await page.locator('dialog').evaluate(el=>el.scrollWidth>el.clientWidth),false);
+  await page.keyboard.press('Escape');assert.equal(await page.locator('dialog').evaluate(el=>el.open),false);
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+  await page.addInitScript(()=>{const original=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(type,...args){return type.startsWith('webgl')?null:original.call(this,type,...args);};});
+  await page.reload();await page.locator('.gallery-fallback').waitFor();await page.locator('.gallery-fallback').click();await page.getByRole('heading',{name:'Selected work.',exact:true}).waitFor();
+  assert.deepEqual(errors,[]);
+  console.log('PASS: complete saved content coverage; all 5 projects, skills, journey, certifications, 7 repos, resume/print, contact validation, live drag, orbital view, mobile, reduced motion and WebGL fallback.');
+ }finally{await browser.close();}
+})().catch(e=>{console.error(e);process.exitCode=1;});
