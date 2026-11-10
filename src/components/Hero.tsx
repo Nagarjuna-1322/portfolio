@@ -13,10 +13,10 @@ export const Hero: React.FC<{ onOpenResume: () => void }> = ({ onOpenResume }) =
       <div className="hero-layout">
         <motion.div className="hero-copy" initial={reducedMotion ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <div className="hero-availability"><span />{PERSONAL_INFO.status}</div>
-          <p className="hero-eyebrow">FULL-STACK DEVELOPER / AI ENGINEER</p>
+          <p className="hero-eyebrow">AI &amp; ML STUDENT / FULL-STACK DEVELOPER</p>
           <h1 id="hero-name-heading">Nagarjuna<br /><span>Reddy.</span></h1>
           <h2>I turn complex ideas into<br className="hidden sm:block" /> useful digital experiences.</h2>
-          <p className="hero-description">From intelligent AI assistants to full-stack web apps, I build with Python, React, and a curiosity for what comes next.</p>
+          <p className="hero-description">{PERSONAL_INFO.summary}</p>
           <div className="hero-actions">
             <button id="hero-explore-btn" className="hero-primary" onClick={() => scrollToElement('#projects')} >Explore my work <ArrowUpRight size={18} /></button>
             <button id="hero-resume-btn" className="hero-secondary" onClick={onOpenResume}><FileText size={17} /> View resume</button>
