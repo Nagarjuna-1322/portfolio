@@ -2,10 +2,10 @@ import { Project, SkillCategory, JourneyMilestone, Certification, GithubRepoInfo
 
 export const PERSONAL_INFO = {
   name: "NAGARJUNA REDDY",
-  fullName: "Nagarjuna Reddy Mekala",
+  fullName: "M. Nagarjuna Reddy",
   profilePhoto: "/profile.jpg",
-  headline: "Full-Stack Development & AI Engineering",
-  tagline: "Full-Stack Developer • AI & ML Enthusiast • Open-Source Prototyper",
+  headline: "B.Tech student specializing in Artificial Intelligence & Machine Learning",
+  tagline: "AI & ML Student • Full-Stack Developer • Curious Builder",
   status: "Available for Internships & Opportunities",
   location: "Hyderabad, India",
   phone: "+91 7569304566",
@@ -14,8 +14,8 @@ export const PERSONAL_INFO = {
   githubUsername: "Nagarjuna-1322",
   linkedinUrl: "https://linkedin.com/in/m-nagarjuna-reddy-ab00b5323",
   resumePath: "/resume.pdf", // Easily replaceable resume file path
-  summary: "Engineering student and full-stack developer specializing in building scalable web applications with modern tools, clean code practices, and artificial intelligence. Possesses hands-on engineering experience spanning Python (FastAPI, spaCy NLP, scikit-learn), TypeScript, React, Next.js, and Generative AI pipelines with Google Gemini.",
-  bio: "Engineering student focused on full-stack development, building scalable web applications with modern tools and clean code practices.",
+  summary: "B.Tech student specializing in Artificial Intelligence and Machine Learning at Guru Nanak Institutions in Hyderabad. Builds full-stack applications and explores practical uses of generative AI, including ScholarAI, an AI-powered scholarship discovery and application assistant.",
+  bio: "Curious about how AI can make everyday tasks easier. I learn by building, experimenting with prompts and tools, and contributing to technical communities.",
   languagesSpoken: [
     { name: "Telugu", level: "Native" },
     { name: "English", level: "Fluent" },
@@ -444,6 +444,18 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
     badge: "National Hackathon"
   },
   {
+    id: "ignite-2026",
+    period: "2026",
+    year: "2026",
+    title: "Organizing Committee — IGNITE (AI & ML) 2026",
+    organization: "Guru Nanak Institutions",
+    location: "Hyderabad, India",
+    category: "Leadership",
+    description: "Contributed to the organizing committee for a 24-hour inter-college AI and ML hackathon, working with students, faculty, and fellow volunteers to support the event.",
+    achievements: ["Received a Certificate of Appreciation for organizing committee service", "Built experience in teamwork, communication, and event coordination"],
+    badge: "Certificate of Appreciation"
+  },
+  {
     id: "narayana-inter",
     period: "2022 — 2024",
     year: "Passed 2024",
@@ -508,6 +520,30 @@ export const CERTIFICATIONS: Certification[] = [
     description: "Awarded for outstanding technical volunteering, logistics coordination, and team mentorship at the Devnovate 24-Hour National Hackathon.",
     skillsCovered: ["Technical Leadership", "Event Logistics", "Team Mentoring"],
     credentialUrl: "https://github.com/Nagarjuna-1322"
+  },
+  {
+    id: "cert-aws-genai",
+    title: "Introduction to Generative AI — Art of the Possible",
+    issuer: "AWS",
+    date: "Completed",
+    description: "An introductory course on generative AI and its potential applications.",
+    skillsCovered: ["Generative AI", "AI Applications"]
+  },
+  {
+    id: "cert-ibm-llm",
+    title: "Introduction to Large Language Models",
+    issuer: "Other",
+    date: "Completed",
+    description: "Course covering large language model fundamentals and their role in generative AI and natural language processing.",
+    skillsCovered: ["Large Language Models", "Generative AI", "NLP"]
+  },
+  {
+    id: "cert-claude-academy",
+    title: "Introduction to Claude",
+    issuer: "Other",
+    date: "Completed",
+    description: "Explored Claude and its capabilities through Claude Academy as part of ongoing AI learning.",
+    skillsCovered: ["Claude", "Generative AI"]
   }
 ];
 
